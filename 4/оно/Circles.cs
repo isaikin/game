@@ -55,7 +55,7 @@ namespace оно
         {
             copplines.Sort(Compare1);
         }
-        public void BFS(int v, Graphics DrawGraphics, Color Background, ListBox myListBox,int time)
+        public  void BFS(int v, Graphics DrawGraphics, Color Background, ListBox myListBox, int time)
         {
             time1 = 0;
             for (int i = 0; i < Areas.Count; i++)
@@ -96,6 +96,49 @@ namespace оно
                     }
                 }
             }
+
+        }
+        public void DFS(int v, Graphics DrawGraphics, Color Background, ListBox myListBox, ref int time,bool []used,int time1)
+        {
+            foreach (var element in g[v])
+            {
+                if (!used[element.Key])
+                {
+                    for (int j = 0; j < lines.Count; j++)
+                    {
+                        if (lines[j].Value == lines[element.Value].Value && lines[j].Key == lines[element.Value].Key || lines[j].Key == lines[element.Value].Value && lines[j].Value == lines[element.Value].Key)
+                        {
+                            LineColor[j] = Brushes.YellowGreen;
+
+                        }
+                    }
+                    time++;
+                    timeAreas[element.Key] = time;
+                    used[element.Key] = true;
+                    Color[element.Key] = Brushes.Red;
+                    LineColor[element.Value] = Brushes.YellowGreen;
+                    Draw(DrawGraphics, Background, myListBox);
+                    p[element.Key] = v;
+                    Thread.Sleep(time1);
+                    DFS(element.Key, DrawGraphics, Background, myListBox, ref time, used,time1);
+
+                }
+            }
+        }
+    
+        public void PreDFS(int v, Graphics DrawGraphics, Color Background, ListBox myListBox, int time1)
+        {
+           int time = 0;
+            for (int i = 0; i < Areas.Count; i++)
+                p[i] = -1;
+            bool[] used = new bool[Areas.Count];
+            used[v] = true;
+            Color[v] = Brushes.Red;
+            timeAreas[v] = time;
+            Draw(DrawGraphics, Background, myListBox);
+            Thread.Sleep(time);
+            DFS(v,DrawGraphics,Background,myListBox,ref time,used,time1);
+            
 
         }
         public Circles(string path)

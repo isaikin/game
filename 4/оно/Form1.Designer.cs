@@ -37,15 +37,15 @@
             this.всавитьГрафToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.визуализацияBfsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.визуализацияBfsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.визуализацияDfsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сбросToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.проверкаBfsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.проверкаDfsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.визуализацияBfsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,9 +70,9 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(466, 51);
+            this.listBox1.Location = new System.Drawing.Point(577, 27);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 173);
+            this.listBox1.Size = new System.Drawing.Size(10, 4);
             this.listBox1.TabIndex = 2;
             // 
             // menuStrip1
@@ -127,10 +127,6 @@
             this.справкаToolStripMenuItem.Text = "Справка";
             this.справкаToolStripMenuItem.Click += new System.EventHandler(this.справкаToolStripMenuItem_Click);
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
             // визуализацияBfsToolStripMenuItem
             // 
             this.визуализацияBfsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -142,6 +138,13 @@
             this.визуализацияBfsToolStripMenuItem.Name = "визуализацияBfsToolStripMenuItem";
             this.визуализацияBfsToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.визуализацияBfsToolStripMenuItem.Text = "Выбор";
+            // 
+            // визуализацияBfsToolStripMenuItem1
+            // 
+            this.визуализацияBfsToolStripMenuItem1.Name = "визуализацияBfsToolStripMenuItem1";
+            this.визуализацияBfsToolStripMenuItem1.Size = new System.Drawing.Size(169, 22);
+            this.визуализацияBfsToolStripMenuItem1.Text = "Визуализация bfs";
+            this.визуализацияBfsToolStripMenuItem1.Click += new System.EventHandler(this.визуализацияBfsToolStripMenuItem1_Click);
             // 
             // визуализацияDfsToolStripMenuItem
             // 
@@ -169,13 +172,11 @@
             this.проверкаDfsToolStripMenuItem.Name = "проверкаDfsToolStripMenuItem";
             this.проверкаDfsToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.проверкаDfsToolStripMenuItem.Text = "Проверка dfs";
+            this.проверкаDfsToolStripMenuItem.Click += new System.EventHandler(this.проверкаDfsToolStripMenuItem_Click);
             // 
-            // визуализацияBfsToolStripMenuItem1
+            // openFileDialog1
             // 
-            this.визуализацияBfsToolStripMenuItem1.Name = "визуализацияBfsToolStripMenuItem1";
-            this.визуализацияBfsToolStripMenuItem1.Size = new System.Drawing.Size(169, 22);
-            this.визуализацияBfsToolStripMenuItem1.Text = "Визуализация bfs";
-            this.визуализацияBfsToolStripMenuItem1.Click += new System.EventHandler(this.визуализацияBfsToolStripMenuItem1_Click);
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // Form1
             // 
@@ -191,7 +192,6 @@
             this.Name = "Form1";
             this.Text = "Визуализвция BFS";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
-        
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
             this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDoubleClick);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
