@@ -71,7 +71,9 @@ namespace оно
                             if (time >= myCircles.Areas.Count )
                             {
                                 check = false;
+                                сбросToolStripMenuItem_Click(sender,e);
                                 MessageBox.Show("Finish");
+
 
                             }
 
@@ -157,6 +159,7 @@ namespace оно
                                 {
 
                                     myCircles.lines.Add(temp);
+                                    
                                     myCircles.lines.Add(new KeyValuePair<int, int>(i, Pointer));
                                     Circles.LineColor.Add(Brushes.Black);
                                     Circles.LineColor.Add(Brushes.Black);

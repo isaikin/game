@@ -160,6 +160,7 @@ namespace оно
             Color.Add(Brushes.Blue);
             Areas.Add(new Rectangle(click, new Size(25, 25)));
             timeAreas.Add(-1);
+            p.Add(-1);
 
         }
 
