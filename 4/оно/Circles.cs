@@ -17,27 +17,61 @@ namespace оно
     {
         
         public  List<Rectangle> Areas;
+        public List<KeyValuePair<int, int>>  copplines;
         public static List<Brush> Color;
         public static List<Brush> LineColor;
         public List<KeyValuePair<int,int> > lines;
-
+        public List<int> timeAreas;
+        public List<int> p;
+        int time1;
+        int timealgo;
         public Dictionary<int, List<KeyValuePair<int,int>>> g;
         public List<KeyValuePair<Point, Point>> Lines;
         public int n;
-        public void BFS(int v, Graphics DrawGraphics, Color Background, ListBox myListBox)
+        public static int Compare1(KeyValuePair<int, int> a, KeyValuePair<int, int> b)
         {
+            if (a.Value > b.Value)
+            {
+                return 1;
+            }
+            else
+            {
+                if (a.Value == b.Value)
+                {
+                    if (a.Key > b.Key)
+                    {
+                        return 1;
+                    }
+                   
+                    if (a.Key == b.Key)
+                        return 0;
+                    return -1;
+                }
+                return -1;
+            }
+            
+        }
+        public void SortLines()
+        {
+            copplines.Sort(Compare1);
+        }
+        public void BFS(int v, Graphics DrawGraphics, Color Background, ListBox myListBox,int time)
+        {
+            time1 = 0;
+            for (int i = 0; i < Areas.Count; i++)
+                p[i] = -1;
             bool []used = new bool[Areas.Count];
             Queue<int> q = new Queue<int>();
             used[v] = true;
             q.Enqueue(v);
             Color[v] = Brushes.Red;
-            
+            timeAreas[v] = time;
             Draw(DrawGraphics, Background, myListBox);
-            Thread.Sleep(2000);
+            Thread.Sleep(time);
             while (q.Count != 0)
             {
                 int to = q.Dequeue();
-
+             
                 foreach (var element in g[to])
                 {
                     if (!used[element.Key])
@@ -50,12 +84,14 @@ namespace оно
                                 
                             }
                         }
-
+                        time++;
+                        timeAreas[element.Key] = time;
                         used[element.Key] = true;
                         Color[element.Key] = Brushes.Red;
                         LineColor[element.Value] = Brushes.YellowGreen;
                         Draw(DrawGraphics, Background, myListBox);
-                        Thread.Sleep(2000);
+                        p[element.Key] = to;
+                        Thread.Sleep(time);
                         q.Enqueue(element.Key);
                     }
                 }
@@ -66,14 +102,18 @@ namespace оно
         {
             using (StreamReader input = new StreamReader(path))
             {
+                copplines = new List<KeyValuePair<int, int>>();
                 var XY = input.ReadLine().Split(new char[] { ':',' ' },StringSplitOptions.RemoveEmptyEntries) ;
                 Areas = new List<Rectangle>();
                 Color = new List<Brush>();
+                timeAreas = new List<int>();
+                p = new List<int>();
                 for (int i = 0; i < XY.Length; i+=2)
                 {
+                    p.Add(-1);
                     Color.Add(Brushes.Blue);
                     Areas.Add(new Rectangle(new Point(int.Parse(XY[i]) ,int.Parse(XY[i+1])), new Size(25, 25)));
-                   
+                    timeAreas.Add(-1);
                 }
                 var linesinput = input.ReadLine().Split(new char[] { '.' ,' ' }, StringSplitOptions.RemoveEmptyEntries);
                 Lines = new List<KeyValuePair<Point, Point>>();
@@ -87,21 +127,25 @@ namespace оно
                 }
                 n = Areas.Count;
                 g = new Dictionary<int, List<KeyValuePair<int, int>>>(n);
+                
             }
         }
         public Circles(TextBox a)
         {
             
               n = int.Parse(a.Text);
-           
-            
+            p = new List<int>();
+            copplines = new List<KeyValuePair<int, int>>();
             int y=30;
             Areas =  new List<Rectangle>();
+            timeAreas = new List<int>();
             Color = new List<Brush>();
             for (int i = 0; i <n; i++)
             {
+                p.Add(-1);
                 Color.Add(Brushes.Blue);
                 Areas.Add(new Rectangle(new Point(0, y), new Size(25, 25)));
+                timeAreas.Add(-1);
                 y += 40;               
             }
             Lines = new List<KeyValuePair<Point, Point>>();
@@ -115,7 +159,7 @@ namespace оно
             n++;
             Color.Add(Brushes.Blue);
             Areas.Add(new Rectangle(click, new Size(25, 25)));
-            
+            timeAreas.Add(-1);
 
         }
 

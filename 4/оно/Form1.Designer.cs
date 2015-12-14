@@ -37,11 +37,15 @@
             this.всавитьГрафToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.визуализацияBfsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.визуализацияDfsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сбросToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.проверкаBfsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.проверкаDfsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.визуализацияBfsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,7 +80,8 @@
             this.menuStrip1.AllowMerge = false;
             this.menuStrip1.AutoSize = false;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem});
+            this.файлToolStripMenuItem,
+            this.визуализацияBfsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(598, 24);
@@ -122,37 +127,61 @@
             this.справкаToolStripMenuItem.Text = "Справка";
             this.справкаToolStripMenuItem.Click += new System.EventHandler(this.справкаToolStripMenuItem_Click);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(481, 242);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Старт";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(481, 271);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "Рестарт";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // визуализацияBfsToolStripMenuItem
+            // 
+            this.визуализацияBfsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.визуализацияBfsToolStripMenuItem1,
+            this.визуализацияDfsToolStripMenuItem,
+            this.сбросToolStripMenuItem,
+            this.проверкаBfsToolStripMenuItem,
+            this.проверкаDfsToolStripMenuItem});
+            this.визуализацияBfsToolStripMenuItem.Name = "визуализацияBfsToolStripMenuItem";
+            this.визуализацияBfsToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.визуализацияBfsToolStripMenuItem.Text = "Выбор";
+            // 
+            // визуализацияDfsToolStripMenuItem
+            // 
+            this.визуализацияDfsToolStripMenuItem.Name = "визуализацияDfsToolStripMenuItem";
+            this.визуализацияDfsToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.визуализацияDfsToolStripMenuItem.Text = "Визуализация dfs";
+            this.визуализацияDfsToolStripMenuItem.Click += new System.EventHandler(this.визуализацияDfsToolStripMenuItem_Click);
+            // 
+            // сбросToolStripMenuItem
+            // 
+            this.сбросToolStripMenuItem.Name = "сбросToolStripMenuItem";
+            this.сбросToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.сбросToolStripMenuItem.Text = "Сброс";
+            this.сбросToolStripMenuItem.Click += new System.EventHandler(this.сбросToolStripMenuItem_Click);
+            // 
+            // проверкаBfsToolStripMenuItem
+            // 
+            this.проверкаBfsToolStripMenuItem.Name = "проверкаBfsToolStripMenuItem";
+            this.проверкаBfsToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.проверкаBfsToolStripMenuItem.Text = "Проверка bfs";
+            this.проверкаBfsToolStripMenuItem.Click += new System.EventHandler(this.проверкаBfsToolStripMenuItem_Click);
+            // 
+            // проверкаDfsToolStripMenuItem
+            // 
+            this.проверкаDfsToolStripMenuItem.Name = "проверкаDfsToolStripMenuItem";
+            this.проверкаDfsToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.проверкаDfsToolStripMenuItem.Text = "Проверка dfs";
+            // 
+            // визуализацияBfsToolStripMenuItem1
+            // 
+            this.визуализацияBfsToolStripMenuItem1.Name = "визуализацияBfsToolStripMenuItem1";
+            this.визуализацияBfsToolStripMenuItem1.Size = new System.Drawing.Size(169, 22);
+            this.визуализацияBfsToolStripMenuItem1.Text = "Визуализация bfs";
+            this.визуализацияBfsToolStripMenuItem1.Click += new System.EventHandler(this.визуализацияBfsToolStripMenuItem1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(598, 404);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
@@ -162,7 +191,7 @@
             this.Name = "Form1";
             this.Text = "Визуализвция BFS";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
-            this.DoubleClick += new System.EventHandler(this.Form1_DoubleClick);
+        
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
             this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDoubleClick);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
@@ -181,14 +210,18 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem новыйToolStripMenuItem;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.ToolStripMenuItem всавитьГрафToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.ToolStripMenuItem визуализацияBfsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem визуализацияDfsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сбросToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem проверкаBfsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem проверкаDfsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem визуализацияBfsToolStripMenuItem1;
     }
 }
 

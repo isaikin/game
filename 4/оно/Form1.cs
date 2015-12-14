@@ -18,6 +18,8 @@ namespace оно
           
         Circles myCircles;
         bool FirstTimeCLicked;
+        bool check;
+        int time;
         Point FirstClick;
         Point Addclick;
         int Pointer;
@@ -27,6 +29,7 @@ namespace оно
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             FirstTimeCLicked = false;
+            check = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -40,106 +43,154 @@ namespace оно
                 myCircles.Draw(e.Graphics, this.BackColor, listBox1);
         }
 
-        private void Form1_MouseClick(object sender, MouseEventArgs e)
+        private void Form1_MouseClick(object sender, MouseEventArgs e)  
         {
-            if (myCircles == null)
+            if (check)
             {
-                MessageBox.Show("Создейте вершины");
-                return;
-            }
-            if (!FirstTimeCLicked)
-            {
+
                 for (int i = 0; i < myCircles.n; i++)
                 {
-                     if (myCircles.Areas[i].IntersectsWith(new Rectangle(new Point(e.X, e.Y), new Size(2, 2))))
+                    if (myCircles.Areas[i].IntersectsWith(new Rectangle(new Point(e.X, e.Y), new Size(2, 2))))
                     {
-                        FirstTimeCLicked = true;
+                       
                         FirstClick = new Point(e.X, e.Y);
-                        Pointer = i;
-                        Circles.Color[i] = Brushes.Black;
+                        if (myCircles.timeAreas[i] == time)
+                        {
+                            for (int j = 0; j < myCircles.lines.Count; j++)
+                            { 
+                               
+                                    if(myCircles.lines[j].Key ==i && myCircles.lines[j].Value == myCircles.p[i] ||
+                                        myCircles.lines[j].Value == i && myCircles.lines[j].Key == myCircles.p[i])
+                                    Circles.LineColor[j] = Brushes.YellowGreen;
+                                
+                            }
+
+                            time++;
+                            Circles.Color[i] = Brushes.Red;
+                            myCircles.Draw(this.CreateGraphics(), this.BackColor, listBox1);
+                            if (time >= myCircles.Areas.Count )
+                            {
+                                check = false;
+                                MessageBox.Show("Finish");
+
+                            }
+
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Game Over");
+                            сбросToolStripMenuItem_Click(sender,  e);
+                            check = false;
+                            return;
+                        }
+                       
                         myCircles.Draw(this.CreateGraphics(), this.BackColor, listBox1);
                         return;
                     }
                 }
                 myCircles.Draw(this.CreateGraphics(), this.BackColor, listBox1);
-                
-                FirstTimeCLicked = false;
+
+             
                 Pointer = -1;
             }
             else
             {
-                var temp1 = new Rectangle(listBox1.Location, listBox1.Size);
-                if (temp1.IntersectsWith(new Rectangle(e.Location, new Size(2, 2))))
-                    return;
-                for (int i = 0; i < myCircles.n; i++)
-                {
-                    if (myCircles.Areas[i].IntersectsWith(new Rectangle(new Point(e.X, e.Y), new Size(2, 2))))
-                    {
-                        if (Pointer == i)
-                        {
-                            Circles.Color[Pointer] = Brushes.Blue;
-                            myCircles.Draw(this.CreateGraphics(), this.BackColor, listBox1);
-                            Pointer = -1;
-                         
-                            return;
-                        }
-                        
-                            FirstTimeCLicked = false;
-                        if (Pointer != -1)
-                        {
-                            Circles.Color[Pointer] = Brushes.Blue;
-                            var temp = new KeyValuePair<int, int>(Pointer, i);
-                            bool flag = true;
-                            foreach (var t in myCircles.lines)
-                            {
-                                if (temp.Key == t.Key && t.Value == temp.Value )
-                                {
-                                    flag =false;
-                                }
 
-                            }
-                            if (flag)
-                            {
-                                
-                                myCircles.lines.Add(temp);
-                                myCircles.lines.Add(new KeyValuePair<int, int>(i,Pointer));
-                                Circles.LineColor.Add(Brushes.Black);
-                                Circles.LineColor.Add(Brushes.Black);
-                               
-                                myCircles.Draw(this.CreateGraphics(), this.BackColor,listBox1);
-                            }
-                        }
-                        
-                        Pointer = -1;
-                            return;
-                        
-                    }
-                }
-                if (Pointer != -1)
+                if (myCircles == null)
                 {
-                    var tempRectangle = myCircles.Areas[Pointer];
-                    tempRectangle.X = e.X;
-                    tempRectangle.Y = e.Y;
-                    myCircles.Areas.RemoveAt(Pointer);
-                    Circles.Color[Pointer] = Brushes.Blue;
-                    myCircles.Areas.Insert(Pointer, tempRectangle);
-                    myCircles.Draw(this.CreateGraphics(), this.BackColor, listBox1);
-                    FirstTimeCLicked = false;
+                    MessageBox.Show("Создейте вершины");
+                    return;
                 }
-                Pointer = -1;
-                Addclick = new Point(-1, -1);
-                return;
-                
+                if (!FirstTimeCLicked)
+                {
+                    for (int i = 0; i < myCircles.n; i++)
+                    {
+                        if (myCircles.Areas[i].IntersectsWith(new Rectangle(new Point(e.X, e.Y), new Size(2, 2))))
+                        {
+                            FirstTimeCLicked = true;
+                            FirstClick = new Point(e.X, e.Y);
+                            Pointer = i;
+                            Circles.Color[i] = Brushes.Black;
+                            myCircles.Draw(this.CreateGraphics(), this.BackColor, listBox1);
+                            return;
+                        }
+                    }
+                    myCircles.Draw(this.CreateGraphics(), this.BackColor, listBox1);
+
+                    FirstTimeCLicked = false;
+                    Pointer = -1;
+                }
+                else
+                {
+                    var temp1 = new Rectangle(listBox1.Location, listBox1.Size);
+                    if (temp1.IntersectsWith(new Rectangle(e.Location, new Size(2, 2))))
+                        return;
+                    for (int i = 0; i < myCircles.n; i++)
+                    {
+                        if (myCircles.Areas[i].IntersectsWith(new Rectangle(new Point(e.X, e.Y), new Size(2, 2))))
+                        {
+                            if (Pointer == i)
+                            {
+                                Circles.Color[Pointer] = Brushes.Blue;
+                                myCircles.Draw(this.CreateGraphics(), this.BackColor, listBox1);
+                                Pointer = -1;
+
+                                return;
+                            }
+
+                            FirstTimeCLicked = false;
+                            if (Pointer != -1)
+                            {
+                                Circles.Color[Pointer] = Brushes.Blue;
+                                var temp = new KeyValuePair<int, int>(Pointer, i);
+                                bool flag = true;
+                                foreach (var t in myCircles.lines)
+                                {
+                                    if (temp.Key == t.Key && t.Value == temp.Value)
+                                    {
+                                        flag = false;
+                                    }
+
+                                }
+                                if (flag)
+                                {
+
+                                    myCircles.lines.Add(temp);
+                                    myCircles.lines.Add(new KeyValuePair<int, int>(i, Pointer));
+                                    Circles.LineColor.Add(Brushes.Black);
+                                    Circles.LineColor.Add(Brushes.Black);
+
+                                    myCircles.Draw(this.CreateGraphics(), this.BackColor, listBox1);
+                                }
+                            }
+
+                            Pointer = -1;
+                            return;
+
+                        }
+                    }
+                    if (Pointer != -1)
+                    {
+                        var tempRectangle = myCircles.Areas[Pointer];
+                        tempRectangle.X = e.X;
+                        tempRectangle.Y = e.Y;
+                        myCircles.Areas.RemoveAt(Pointer);
+                        Circles.Color[Pointer] = Brushes.Blue;
+                        myCircles.Areas.Insert(Pointer, tempRectangle);
+                        myCircles.Draw(this.CreateGraphics(), this.BackColor, listBox1);
+                        FirstTimeCLicked = false;
+                    }
+                    Pointer = -1;
+                    Addclick = new Point(-1, -1);
+                    return;
+
+                }
             }
-           
             
         }
 
-        private void Form1_DoubleClick(object sender, EventArgs e)
-        {
-
-        }
-
+      
         private void button1_Click_1(object sender, EventArgs e)
         {
             try
@@ -172,51 +223,7 @@ namespace оно
             this.textBox1.Enabled = true;
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            myCircles.g.Clear();
-            myCircles.lines.OrderBy(S => S.Key);
-                for (int i = 0; i < myCircles.n; i++)
-                {
-                    List<KeyValuePair<int, int>> temp = new List<KeyValuePair<int, int>>();
-                    for (int j = 0; j < myCircles.lines.Count; j++)
-                    {
-                        if (myCircles.lines[j].Key == i)
-                        {
-                            temp.Add(new KeyValuePair<int, int>(myCircles.lines[j].Value, j));
-                            
-                        }
-                    }
-                    myCircles.g.Add(i, temp);
-                }
-            
-            myCircles.BFS(Pointer, this.CreateGraphics(), this.BackColor, listBox1);
-            MessageBox.Show("Finish");
-            Pointer = -1;
-            
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < Circles.Color.Count; i++)
-            {
-                Circles.Color[i] = Brushes.Blue;
-            }
-            for (int i = 0; i < Circles.LineColor.Count; i++)
-            {
-
-                Circles.LineColor[i] = Brushes.Black;
-            }
-            myCircles.Draw(this.CreateGraphics(), this.BackColor, listBox1);
-        }
-
-      
-
-        private void button5_Click_1(object sender, EventArgs e)
-        {
-           
-        }
-
+     
         private void Form1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
 
@@ -237,7 +244,7 @@ namespace оно
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
-            if(e.Button==MouseButtons.Right)
+            if(e.Button==MouseButtons.Right && !check)
             {
                 for (int i = 0; i < myCircles.Areas.Count; i++)
                 {
@@ -279,7 +286,8 @@ namespace оно
             {
                 try
                 {
-                        saveFileDialog1.DefaultExt=".txt";
+                        saveFileDialog1.DefaultExt="txt";
+                    
                     path = saveFileDialog1.FileName;
                     {
                        
@@ -288,6 +296,7 @@ namespace оно
                         {
                             foreach (var element in myCircles.Areas)
                                 a.Write("{0}:{1} ",element.X,element.Y);
+                            a.WriteLine();
                             
                             foreach (var element in myCircles.lines)
                             {
@@ -328,6 +337,90 @@ namespace оно
                     MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
                 }
             }
+        }
+
+        private void визуализацияDfsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void визуализацияBfsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            myCircles.copplines = myCircles.lines;
+            myCircles.SortLines();
+            myCircles.g.Clear();
+            myCircles.lines.OrderBy(S => S.Key);
+            for (int i = 0; i < myCircles.Areas.Count; i++)
+            {
+                List<KeyValuePair<int, int>> temp = new List<KeyValuePair<int, int>>();
+                for (int j = 0; j < myCircles.lines.Count; j++)
+                {
+                    if (myCircles.lines[j].Key == i)
+                    {
+                        temp.Add(new KeyValuePair<int, int>(myCircles.lines[j].Value, j));
+
+                    }
+                }
+                myCircles.g.Add(i, temp);
+            }
+           
+            myCircles.BFS(Pointer, this.CreateGraphics(), this.BackColor, listBox1,2000);
+            MessageBox.Show("Finish");
+            Pointer = -1;
+        }
+
+        private void сбросToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < Circles.Color.Count; i++)
+            {
+                myCircles.timeAreas[i] = -1;
+                Circles.Color[i] = Brushes.Blue;
+            }
+            for (int i = 0; i < Circles.LineColor.Count; i++)
+            {
+
+                Circles.LineColor[i] = Brushes.Black;
+            }
+            myCircles.Draw(this.CreateGraphics(), this.BackColor, listBox1);
+        }
+
+        private void проверкаBfsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            myCircles.copplines = myCircles.lines;
+            myCircles.SortLines();
+            myCircles.g.Clear();
+            myCircles.lines.OrderBy(S => S.Key);
+            for (int i = 0; i < myCircles.Areas.Count; i++)
+            {
+                List<KeyValuePair<int, int>> temp = new List<KeyValuePair<int, int>>();
+                for (int j = 0; j < myCircles.lines.Count; j++)
+                {
+                    if (myCircles.lines[j].Key == i)
+                    {
+                        temp.Add(new KeyValuePair<int, int>(myCircles.lines[j].Value, j));
+
+                    }
+                }
+                myCircles.g.Add(i, temp);
+            }
+            Random ran = new Random();
+            int v = ran.Next(0, myCircles.Areas.Count);
+            myCircles.BFS(v, this.CreateGraphics(), this.BackColor, listBox1, 0);
+            for (int i = 0; i < Circles.Color.Count; i++)
+            {
+                Circles.Color[i] = Brushes.Blue;
+            }
+            for (int i = 0; i < Circles.LineColor.Count; i++)
+            {
+
+                Circles.LineColor[i] = Brushes.Black;
+            }
+            check = true;
+            time = 1;
+            Circles.Color[v] = Brushes.Red;
+            myCircles.Draw(this.CreateGraphics(), this.BackColor, listBox1);
+
+
         }
     }
 }
