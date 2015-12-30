@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
@@ -51,84 +52,68 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(124, 26);
+            resources.ApplyResources(this.button1, "button1");
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Построить ";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 26);
+            resources.ApplyResources(this.textBox1, "textBox1");
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(106, 20);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "Колличесво веришн";
             // 
             // listBox1
             // 
+            resources.ApplyResources(this.listBox1, "listBox1");
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(577, 27);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(10, 4);
-            this.listBox1.TabIndex = 2;
             // 
             // menuStrip1
             // 
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.AllowMerge = false;
-            this.menuStrip1.AutoSize = false;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.файлToolStripMenuItem,
             this.визуализацияBfsToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(598, 24);
-            this.menuStrip1.TabIndex = 3;
-            this.menuStrip1.Text = "menuStrip1";
             // 
             // файлToolStripMenuItem
             // 
+            resources.ApplyResources(this.файлToolStripMenuItem, "файлToolStripMenuItem");
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.новыйToolStripMenuItem,
             this.всавитьГрафToolStripMenuItem,
             this.сохранитьToolStripMenuItem,
             this.справкаToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.файлToolStripMenuItem.Text = "Файл";
             // 
             // новыйToolStripMenuItem
             // 
+            resources.ApplyResources(this.новыйToolStripMenuItem, "новыйToolStripMenuItem");
             this.новыйToolStripMenuItem.Name = "новыйToolStripMenuItem";
-            this.новыйToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.новыйToolStripMenuItem.Text = "Новый";
             this.новыйToolStripMenuItem.Click += new System.EventHandler(this.новыйToolStripMenuItem_Click);
             // 
             // всавитьГрафToolStripMenuItem
             // 
+            resources.ApplyResources(this.всавитьГрафToolStripMenuItem, "всавитьГрафToolStripMenuItem");
             this.всавитьГрафToolStripMenuItem.Name = "всавитьГрафToolStripMenuItem";
-            this.всавитьГрафToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.всавитьГрафToolStripMenuItem.Text = "Вставить граф";
             this.всавитьГрафToolStripMenuItem.Click += new System.EventHandler(this.всавитьГрафToolStripMenuItem_Click);
             // 
             // сохранитьToolStripMenuItem
             // 
+            resources.ApplyResources(this.сохранитьToolStripMenuItem, "сохранитьToolStripMenuItem");
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.сохранитьToolStripMenuItem.Text = "Сохранить ";
             this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
             // 
             // справкаToolStripMenuItem
             // 
+            resources.ApplyResources(this.справкаToolStripMenuItem, "справкаToolStripMenuItem");
             this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.справкаToolStripMenuItem.Text = "Справка";
             this.справкаToolStripMenuItem.Click += new System.EventHandler(this.справкаToolStripMenuItem_Click);
             // 
             // визуализацияBfsToolStripMenuItem
             // 
+            resources.ApplyResources(this.визуализацияBfsToolStripMenuItem, "визуализацияBfsToolStripMenuItem");
             this.визуализацияBfsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.визуализацияBfsToolStripMenuItem1,
             this.визуализацияDfsToolStripMenuItem,
@@ -136,61 +121,63 @@
             this.проверкаBfsToolStripMenuItem,
             this.проверкаDfsToolStripMenuItem});
             this.визуализацияBfsToolStripMenuItem.Name = "визуализацияBfsToolStripMenuItem";
-            this.визуализацияBfsToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
-            this.визуализацияBfsToolStripMenuItem.Text = "Выбор";
             // 
             // визуализацияBfsToolStripMenuItem1
             // 
+            resources.ApplyResources(this.визуализацияBfsToolStripMenuItem1, "визуализацияBfsToolStripMenuItem1");
             this.визуализацияBfsToolStripMenuItem1.Name = "визуализацияBfsToolStripMenuItem1";
-            this.визуализацияBfsToolStripMenuItem1.Size = new System.Drawing.Size(169, 22);
-            this.визуализацияBfsToolStripMenuItem1.Text = "Визуализация bfs";
             this.визуализацияBfsToolStripMenuItem1.Click += new System.EventHandler(this.визуализацияBfsToolStripMenuItem1_Click);
             // 
             // визуализацияDfsToolStripMenuItem
             // 
+            resources.ApplyResources(this.визуализацияDfsToolStripMenuItem, "визуализацияDfsToolStripMenuItem");
             this.визуализацияDfsToolStripMenuItem.Name = "визуализацияDfsToolStripMenuItem";
-            this.визуализацияDfsToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
-            this.визуализацияDfsToolStripMenuItem.Text = "Визуализация dfs";
             this.визуализацияDfsToolStripMenuItem.Click += new System.EventHandler(this.визуализацияDfsToolStripMenuItem_Click);
             // 
             // сбросToolStripMenuItem
             // 
+            resources.ApplyResources(this.сбросToolStripMenuItem, "сбросToolStripMenuItem");
             this.сбросToolStripMenuItem.Name = "сбросToolStripMenuItem";
-            this.сбросToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
-            this.сбросToolStripMenuItem.Text = "Сброс";
             this.сбросToolStripMenuItem.Click += new System.EventHandler(this.сбросToolStripMenuItem_Click);
             // 
             // проверкаBfsToolStripMenuItem
             // 
+            resources.ApplyResources(this.проверкаBfsToolStripMenuItem, "проверкаBfsToolStripMenuItem");
             this.проверкаBfsToolStripMenuItem.Name = "проверкаBfsToolStripMenuItem";
-            this.проверкаBfsToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
-            this.проверкаBfsToolStripMenuItem.Text = "Проверка bfs";
             this.проверкаBfsToolStripMenuItem.Click += new System.EventHandler(this.проверкаBfsToolStripMenuItem_Click);
             // 
             // проверкаDfsToolStripMenuItem
             // 
+            resources.ApplyResources(this.проверкаDfsToolStripMenuItem, "проверкаDfsToolStripMenuItem");
             this.проверкаDfsToolStripMenuItem.Name = "проверкаDfsToolStripMenuItem";
-            this.проверкаDfsToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
-            this.проверкаDfsToolStripMenuItem.Text = "Проверка dfs";
             this.проверкаDfsToolStripMenuItem.Click += new System.EventHandler(this.проверкаDfsToolStripMenuItem_Click);
+            // 
+            // folderBrowserDialog1
+            // 
+            resources.ApplyResources(this.folderBrowserDialog1, "folderBrowserDialog1");
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            resources.ApplyResources(this.openFileDialog1, "openFileDialog1");
+            // 
+            // saveFileDialog1
+            // 
+            resources.ApplyResources(this.saveFileDialog1, "saveFileDialog1");
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
+            this.AllowDrop = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(598, 404);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip1);
+            this.DoubleBuffered = true;
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Визуализвция BFS";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
             this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDoubleClick);

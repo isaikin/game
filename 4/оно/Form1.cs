@@ -46,7 +46,7 @@ namespace оно
                 myCircles.Draw(e.Graphics, this.BackColor, listBox1);
         }
 
-        private void Form1_MouseClick(object sender, MouseEventArgs e)
+        private void Form1_MouseClick(object sender, MouseEventArgs e)      
         {
             if (checkDFS)
             {
@@ -497,6 +497,8 @@ namespace оно
 
         private void сбросToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            check = false;
+            checkDFS = false;
             for (int i = 0; i < Circles.Color.Count; i++)
             {
                 myCircles.timeAreas[i] = -1;

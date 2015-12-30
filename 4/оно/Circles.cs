@@ -217,12 +217,7 @@ namespace оно
                 list.Items.Add(temp);
             }
             DrawGraphics.Clear(BackGroundColor);
-            for (int i = 0; i < Areas.Count; i++)
-            {
-                DrawGraphics.FillEllipse(Color[i], Areas[i]);
-                DrawGraphics.DrawString(i.ToString(),new Font(FontFamily.GenericSansSerif,10),Brushes.White,new Point(Areas[i].X+3,Areas[i].Y+3));
-                
-            }
+            
          
             for (int i = 0; i < lines.Count; i++)
             {
@@ -238,7 +233,13 @@ namespace оно
                                 new Point(Areas[element.Value].Location.X+3, Areas[element.Value].Location.Y +3));
                 
             }
-           
+            for (int i = 0; i < Areas.Count; i++)
+            {
+                DrawGraphics.FillEllipse(Color[i], Areas[i]);
+                DrawGraphics.DrawString(i.ToString(), new Font(FontFamily.GenericSansSerif, 10), Brushes.White, new Point(Areas[i].X + 3, Areas[i].Y + 3));
+
+            }
+
         }
 
       
